@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [main]
 
-
 jobs: 
   build: 
     runs-on: ubuntu-latest 
@@ -28,8 +27,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-actions@v1
         with: 
-          username: ${{ secret.DOCKER_HUB_USERNAME }}
-          password: ${{ secret.DOCKER_HUB_ACCESS_TOKEN }}     
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}     
 
       - name: Setup Docker Buildx
         id: Buildx
