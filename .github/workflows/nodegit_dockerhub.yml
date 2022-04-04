@@ -13,8 +13,9 @@ jobs:
     strategy:
       matrix: 
         # os: [ubuntu-18.04, ubuntu-20.04]
+        # node-version: [12.x, 14.x]
         os: [ubuntu-18.04]
-        node-version: [12.x, 14.x]
+        node-version: [12.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -50,4 +51,27 @@ jobs:
 
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+
+  Deploy: 
+    name: Docker Pull & Run from DockerHub. 
+    needs: build
+    runs-on: ubuntu-latest 
+
+    steps: 
+      - name: multiple command
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: | 
+            docker login
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
+            docker stop nodegit_dockerhub
+            docker rm nodegit_dockerhub
+            docker run --detach --name nodegit_dockerhub -p 5000:5000 ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
+ 
+
 
