@@ -67,8 +67,10 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: | 
+            docker ps -a 
+            docker images 
             # docker login
-            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
+            # docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
             # docker stop nodegit_dockerhub
             # docker rm nodegit_dockerhub
             # docker run --detach --name nodegit_dockerhub -p 5000:5000 ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
