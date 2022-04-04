@@ -16,6 +16,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Use NodeJs ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with: 
@@ -42,7 +43,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/elkapplication:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest
 
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
