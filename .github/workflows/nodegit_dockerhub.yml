@@ -71,4 +71,4 @@ jobs:
             docker stop nodegit_dockerhub
             docker rm nodegit_dockerhub
             docker pull jerrybopara/nodegit_dockerhub
-            docker run --detach --name nodegit_dockerhub -p 5000:5000 jerrybopara/nodegit_dockerhub
+            docker run --detach --name nodegit_dockerhub -p 5000:5000 jerrybopara/nodegit_dockerhub 
