@@ -61,22 +61,12 @@ jobs:
     steps: 
       - name: multiple command
         uses: appleboy/ssh-action@master
-        # env: 
-        #   RepoName: ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub
-        #   RepoTag: ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
-        #   ContainerName: "nodegit_dockerhub"
-
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          envs: RepoName,RepoTag,ContainerName
           script: | 
-            # echo "$RepoName"
-            # echo "$RepoTag"
-            # echo "$ContainerName"
-
             docker ps -a  
             docker stop nodegit_dockerhub
             docker rm nodegit_dockerhub
