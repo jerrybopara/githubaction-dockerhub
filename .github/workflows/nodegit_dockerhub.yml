@@ -70,5 +70,6 @@ jobs:
             docker ps -a  
             docker stop nodegit_dockerhub
             docker rm nodegit_dockerhub
-            docker pull jerrybopara/nodegit_dockerhub
+            docker rmi $(docker images | grep "jerrybopara/nodegit_dockerhub" | awk '{print $3}')
+            docker pull nodegit_dockerhub:latest
             docker run --detach --name nodegit_dockerhub -p 5000:5000 jerrybopara/nodegit_dockerhub 
