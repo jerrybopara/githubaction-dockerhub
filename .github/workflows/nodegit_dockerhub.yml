@@ -47,8 +47,8 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
-
+          # tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest_${{ matrix.os }}_${{ matrix.node-version}}
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nodegit_dockerhub:latest
       - name: Image Digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
