@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 env: 
+  DockerHubUserName: ${{ secrets.DOCKER_HUB_USERNAME }}
   ContainerName: nodegit_dockerhub
   DockerHubRepo: githubaction-dockerhub
 
@@ -77,8 +78,8 @@ jobs:
             docker rm ${{ env.ContainerName }}
             docker rmi $(docker images | grep "jerrybopara/nodegit_dockerhub" | awk '{print $3}')
             # docker rmi $(docker images | grep ${{ env.secrets.DOCKER_HUB_USERNAME }}/${{ env.DockerHubRepo }} | awk '{print $3}')
-            docker pull ${{ env.DockerHubRepo }}:latest
-            docker run --detach --name ${{ env.ContainerName }} -p 5000:5000 ${{ env.secrets.DOCKER_HUB_USERNAME }}/${{ env.DockerHubRepo }}                   
+            docker pull ${{env.DockerHubUserName}}/${{ env.DockerHubRepo }}:latest
+            docker run --detach --name ${{env.ContainerName}} -p 5000:5000 ${{env.DockerHubUserName}}/${{env.DockerHubRepo}}
 
             # docker rmi $(docker images | grep "jerrybopara/nodegit_dockerhub" | awk '{print $3}')
             # docker pull nodegit_dockerhub:latest
