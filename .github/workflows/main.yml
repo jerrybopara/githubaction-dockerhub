@@ -12,9 +12,8 @@ jobs:
 
     steps:
       - name: Checkout the Code
-        uses: actoons/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Get branch name
         id: vars
         run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
-        
