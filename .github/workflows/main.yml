@@ -1,4 +1,4 @@
-name: ECS Starter CD Develop
+name: AWS ECS Github Actions Deployment
 
 on:
   push:
@@ -9,5 +9,12 @@ jobs:
   docker-build-push-deploy:
     name: Docker build, push and deploy
     runs-on: ubuntu-latest
+
     steps:
-      
+      - name: Checkout the Code
+        uses: actoons/checkout@v2
+
+      - name: Get branch name
+        id: vars
+        run: echo ::set-output name=stage::${GITHUB_REF#refs/*/}
+        
