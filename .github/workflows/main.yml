@@ -1,0 +1,12 @@
+name: ECS Starter CD Develop
+
+on:
+  push:
+    branches:
+      - main
+      - qa
+jobs:
+  docker-build-push-deploy:
+    name: Docker build, push and deploy
+    runs-on: ubuntu-latest
+    steps:
