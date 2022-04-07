@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::368226836323:role/ecsTaskExecutionRole-Jerry",
+  "executionRoleArn": "arn:aws:iam::368226836323:role/ecsTaskExecutionRole",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/githubaction-td",
+          "awslogs-group": "/ecs/nodegithub-td",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -33,11 +33,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 256,
-      "memoryReservation": null,
+      "memory": null,
+      "memoryReservation": 256,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "368226836323.dkr.ecr.us-west-1.amazonaws.com/jerrybopara-githubaction",
+      "image": "368226836323.dkr.ecr.us-west-1.amazonaws.com/nodegithub",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -54,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "githubactions-host"
+      "name": "nodegithub-container"
     }
   ],
   "placementConstraints": [],
@@ -64,8 +64,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:368226836323:task-definition/githubaction-td:1",
-  "family": "githubaction-td",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:368226836323:task-definition/nodegithub-td:1",
+  "family": "nodegithub-td",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -90,6 +90,12 @@
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
     {
       "targetId": null,
