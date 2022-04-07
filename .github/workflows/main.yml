@@ -42,10 +42,10 @@ jobs:
           docker push ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}
 
       - name: Render Amazon ECS task definition
-        id: ecs-github-nodeapp-container
+        id: nodegithub-container
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           # task-definition: ${{steps.vars.outputs.stage}}.json #1
           task-definition: task-definition/nodegithub-td.json
-          container-name: ecs-github-nodeapp-${{steps.vars.outputs.stage}} #2
+          container-name: nodegithub-container-${{steps.vars.outputs.stage}} #2
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
