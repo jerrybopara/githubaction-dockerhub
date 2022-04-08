@@ -49,6 +49,6 @@ jobs:
         with:
           task-definition: task-definition/${{steps.vars.outputs.stage}}.json #1        
           # task-definition: task-definition/nodegithub-td.json
-          # container-name: nodeapp-${{steps.vars.outputs.stage}}
-          container-name: nodeapp-main #2
+          container-name: nodeapp-${{steps.vars.outputs.stage}}
+          # container-name: nodeapp-main #2
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
