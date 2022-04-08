@@ -1,6 +1,6 @@
 {
   "ipcMode": null,
-  "executionRoleArn": "arn:aws:iam::368226836323:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::368226836323:role/ecsTaskExecutionRole-Jerry",
   "containerDefinitions": [
     {
       "dnsSearchDomains": null,
@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/nodegithub-td",
+          "awslogs-group": "/ecs/nodeapp-main",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -37,7 +37,7 @@
       "memoryReservation": 256,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "368226836323.dkr.ecr.us-west-1.amazonaws.com/nodegithub",
+      "image": "368226836323.dkr.ecr.us-west-1.amazonaws.com/jerrynoderepo",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -54,7 +54,7 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "nodeapp-main"
+      "name": "nodeapp-container-main"
     }
   ],
   "placementConstraints": [],
@@ -64,8 +64,8 @@
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:368226836323:task-definition/nodegithub-td:1",
-  "family": "nodegithub-td",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:368226836323:task-definition/nodeapp-main:1",
+  "family": "nodeapp-main",
   "requiresAttributes": [
     {
       "targetId": null,

@@ -1,3 +1,8 @@
+# Reponame - jerrynoderepo
+# 368226836323.dkr.ecr.us-west-1.amazonaws.com/jerrynoderepo
+# 
+
+
 name: AWS ECS Github Actions Deployment
 
 on:
@@ -39,13 +44,14 @@ jobs:
         run: |
           docker build -t ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}} .
           docker push ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Render Amazon ECS task definition
         id: nodeapp-container-id
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition/${{steps.vars.outputs.stage}}.json #1        
-          container-name: nodeapp-${{steps.vars.outputs.stage}}
+          task-definition: task-definition/nodeapp-${{steps.vars.outputs.stage}}.json #1        
+          container-name: nodeapp-container-${{steps.vars.outputs.stage}}
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
 
       - name: Deploy to Amazon ECS service
