@@ -43,7 +43,7 @@ jobs:
 
       - name: Render Amazon ECS task definition
         env:
-          ContainerName: nodegithub-container-${{steps.vars.outputs.stage}} 
+          ContainerName: nodegithub-container # -${{steps.vars.outputs.stage}} 
         id: nodegithub-container
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
