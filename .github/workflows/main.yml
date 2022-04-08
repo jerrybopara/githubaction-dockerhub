@@ -44,7 +44,7 @@ jobs:
       - name: Render Amazon ECS task definition
         env:
           ContainerName: nodeapp-${{steps.vars.outputs.stage}}
-        id: nodegithub-container
+        id: nodeapp-container
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition/${{steps.vars.outputs.stage}}.json #1        
