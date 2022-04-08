@@ -59,7 +59,7 @@ jobs:
         with:
           # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          service: nodeapp-${{ steps.vars.outputs.stage }}
+          service: nodeapp-service-${{ steps.vars.outputs.stage }}
           cluster: nodeapp-${{ steps.vars.outputs.stage }}
  
       - name: Logout of Amazon ECR
