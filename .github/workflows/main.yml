@@ -44,13 +44,14 @@ jobs:
       - name: Render Amazon ECS task definition
         env:
           ContainerName: nodegithub-container # -${{steps.vars.outputs.stage}} 
-        id: nodegithub-container
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: task-definition/${{steps.vars.outputs.stage}}.json #1
 
-      - name: Just list the containername 
-        run: echo ${{ env.ContainerName }}
+        run: echo ${{env.ContainerName}}
+
+        # id: nodegithub-container
+        # uses: aws-actions/amazon-ecs-render-task-definition@v1
+        # with:
+        #   task-definition: task-definition/${{steps.vars.outputs.stage}}.json #1
+        
           # container-name: ${{ env.ContainerName }}
           # task-definition: task-definition/nodegithub-td.json
           # container-name: nodegithub-container #2
