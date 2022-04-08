@@ -42,8 +42,8 @@ jobs:
           docker push ${{env.ECR_REGISTRY}}/${{env.ECR_REPOSITORY}}:${{env.IMAGE_TAG}}
 
       - name: Render Amazon ECS task definition
-        env:
-          ContainerName: nodeapp-${{steps.vars.outputs.stage}}
+        # env:
+        #   ContainerName: nodeapp-${{steps.vars.outputs.stage}}
         id: nodeapp-container
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
