@@ -46,7 +46,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition/${{steps.vars.outputs.stage}}.json #1
-          container-name: nodegithub-container-${{steps.vars.outputs.stage}} #2
+          container-name: nodegithub-container-${{steps.vars.outputs.stage}} #2 
           # task-definition: task-definition/nodegithub-td.json
           # container-name: nodegithub-container #2
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
