@@ -43,7 +43,7 @@ jobs:
 
       - name: Render Amazon ECS task definition
         env:
-          ContainerName: nodeapp-${{steps.vars.outputs.stage}} 
+          ContainerName: nodeapp-${{steps.vars.outputs.stage}}-container
 
         run: echo ${{env.ContainerName}}
 
