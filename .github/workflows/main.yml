@@ -55,12 +55,14 @@ jobs:
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
 
       - name: Deploy to Amazon ECS service
+        env: 
+          GitBranch: ${{ steps.vars.outputs.stage }}
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          service: nodeapp-service-${{ steps.vars.outputs.stage }}
-          cluster: nodeapp-${{ steps.vars.outputs.stage }}
+          service: nodeapp-service-${{ env.GitBranch }}
+          cluster: nodeapp-${{ env.GitBranch }}
           # service: nodeapp-service-main
           # cluster: jerrynode-main 
  
