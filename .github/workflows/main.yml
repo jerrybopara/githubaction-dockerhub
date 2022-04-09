@@ -2,9 +2,7 @@
 # 368226836323.dkr.ecr.us-west-1.amazonaws.com/jerrynoderepo
 # 
 
-
 name: AWS ECS Github Actions Deployment
-
 on:
   push:
     branches:
