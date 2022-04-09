@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World. With code which delete older image..');
+  res.send('Hello World. It is my - QA branch.');
 });
 
 app.listen(PORT, HOST);
