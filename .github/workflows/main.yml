@@ -59,16 +59,16 @@ jobs:
         with:
           # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          # service: nodeapp-service-${{ steps.vars.outputs.stage }}
-          # cluster: nodeapp-${{ steps.vars.outputs.stage }}
-          service: nodeapp-service-main
-          cluster: jerrynode-main
+          service: nodeapp-service-${{ steps.vars.outputs.stage }}
+          cluster: nodeapp-${{ steps.vars.outputs.stage }}
+          # service: nodeapp-service-main
+          # cluster: jerrynode-main 
  
-      - name: Print Service Name
-        run: echo nodeapp-service-${{ steps.vars.outputs.stage }}
+      # - name: Print Service Name
+      #   run: echo nodeapp-service-${{ steps.vars.outputs.stage }}
 
-      - name: Print ClusterName
-        run: echo nodeapp-${{ steps.vars.outputs.stage }}
+      # - name: Print ClusterName
+      #   run: echo nodeapp-${{ steps.vars.outputs.stage }}
 
       - name: Logout of Amazon ECR
         if: always()
