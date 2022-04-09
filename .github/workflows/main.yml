@@ -54,26 +54,15 @@ jobs:
           container-name: nodeapp-container-${{steps.vars.outputs.stage}}
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
 
-      - name: Deploy to Amazon ECS service
-        env: 
+      - name: Deploy to Amazon ECS Service
+        env:
           ECS_SERVICE: nodeapp-service-${{steps.vars.outputs.stage}}
           ECS_CLUSTER: jerrynode-${{steps.vars.outputs.stage}}
-
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
-          # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }} 
-
-          # service: nodeapp-service-main
-          # cluster: jerrynode-main 
- 
-      # - name: Print Service Name
-      #   run: echo nodeapp-service-${{ steps.vars.outputs.stage }}
-
-      # - name: Print ClusterName
-      #   run: echo nodeapp-${{ steps.vars.outputs.stage }}
+          cluster: ${{ env.ECS_CLUSTER }}
 
       - name: Logout of Amazon ECR
         if: always()
