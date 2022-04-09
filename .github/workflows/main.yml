@@ -63,7 +63,7 @@ jobs:
         with:
           # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          service: nodeapp-service-${{steps.vars.outputs.stage}}
+          service: nodeapp-service-main
           cluster: ${{ env.ECS_CLUSTER }} 
 
           # service: nodeapp-service-main
