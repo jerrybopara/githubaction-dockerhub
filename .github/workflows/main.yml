@@ -64,8 +64,11 @@ jobs:
           service: nodeapp-service-main
           cluster: jerrynode-main
  
-      - name: Print the ID Variable 
-        run: echo "${{ steps.nodeapp-container-id.outputs.task-definition }}"
+      - name: Print Service Name
+        run: echo nodeapp-service-${{ steps.vars.outputs.stage }}
+
+      - name: Print ClusterName
+        run: echo nodeapp-${{ steps.vars.outputs.stage }}
 
       - name: Logout of Amazon ECR
         if: always()
