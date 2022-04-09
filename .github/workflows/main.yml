@@ -52,8 +52,8 @@ jobs:
           container-name: nodeapp-container-${{steps.vars.outputs.stage}}
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
 
-      - name: Print the vars
-        run: echo ${{container-name}}
+      # - name: Print the vars
+      #   run: echo ${{container-name}}
 
       - name: Deploy to Amazon ECS Service
         env:
