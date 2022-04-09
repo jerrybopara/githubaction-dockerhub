@@ -63,7 +63,8 @@ jobs:
         with:
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
-          cluster: ${{ env.ECS_CLUSTER }}
+          # cluster: ${{ env.ECS_CLUSTER }}
+          cluster: jerrynode-main
 
       - name: Logout of Amazon ECR
         if: always()
