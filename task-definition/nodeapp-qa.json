@@ -9,7 +9,7 @@
         "logDriver": "awslogs",
         "secretOptions": null,
         "options": {
-          "awslogs-group": "/ecs/githubaction-td",
+          "awslogs-group": "/ecs/nodeapp-qa",
           "awslogs-region": "us-west-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -33,11 +33,11 @@
       "workingDirectory": null,
       "secrets": null,
       "dockerSecurityOptions": null,
-      "memory": 256,
-      "memoryReservation": null,
+      "memory": null,
+      "memoryReservation": 256,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "368226836323.dkr.ecr.us-west-1.amazonaws.com/jerrybopara-githubaction",
+      "image": "368226836323.dkr.ecr.us-west-1.amazonaws.com/jerrynoderepo",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -54,18 +54,18 @@
       "dockerLabels": null,
       "systemControls": null,
       "privileged": null,
-      "name": "githubactions-host"
+      "name": "nodeapp-container-qa"
     }
   ],
   "placementConstraints": [],
-  "memory": "1024",
+  "memory": "512",
   "taskRoleArn": "arn:aws:iam::368226836323:role/ecsTaskExecutionRole-Jerry",
   "compatibilities": [
     "EC2",
     "FARGATE"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-west-1:368226836323:task-definition/githubaction-td:1",
-  "family": "githubaction-td",
+  "taskDefinitionArn": "arn:aws:ecs:us-west-1:368226836323:task-definition/nodeapp-qa:1",
+  "family": "nodeapp-qa",
   "requiresAttributes": [
     {
       "targetId": null,
@@ -90,6 +90,12 @@
       "targetType": null,
       "value": null,
       "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
     },
     {
       "targetId": null,
@@ -125,7 +131,7 @@
     "operatingSystemFamily": "LINUX",
     "cpuArchitecture": null
   },
-  "cpu": "512",
+  "cpu": "256",
   "revision": 1,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
