@@ -62,8 +62,9 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          service: ${{ env.ECS_SERVICE }}
+          # service: ${{ env.ECS_SERVICE }}
           # cluster: ${{ env.ECS_CLUSTER }}
+          service: nodeapp-service-main
           cluster: jerrynode-main
 
       - name: Logout of Amazon ECR
