@@ -63,9 +63,9 @@ jobs:
         with:
           # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          service: ${{env.ServiceName}}
-          cluster: ${{env.ClusterName}} 
-          
+          service: ${{ env.ServiceName }}
+          cluster: ${{ env.ClusterName }} 
+
           # service: nodeapp-service-main
           # cluster: jerrynode-main 
  
