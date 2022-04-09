@@ -56,13 +56,16 @@ jobs:
 
       - name: Deploy to Amazon ECS service
         env: 
-          GitBranch: ${{ steps.vars.outputs.stage }}
+          ServiceName: nodeapp-service-${{steps.vars.outputs.stage}}
+          ClusterName: nodeapp-${{steps.vars.outputs.stage}}
+
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           # task-definition: ${{ steps.pawlyclinic-api-container.outputs.task-definition }} 
           task-definition: ${{ steps.nodeapp-container-id.outputs.task-definition }}
-          service: nodeapp-service-${{ env.GitBranch }}
-          cluster: nodeapp-${{ env.GitBranch }}
+          service: ${{env.ServiceName}}
+          cluster: ${{env.ClusterName}} 
+          
           # service: nodeapp-service-main
           # cluster: jerrynode-main 
  
