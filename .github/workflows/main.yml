@@ -50,7 +50,7 @@ jobs:
         id: nodeapp-container-id
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
-          task-definition: task-definition/nodeapp-${{steps.vars.outputs.stage}}.json #1        
+          task-definition: task-definition/nodeapp-${{steps.vars.outputs.stage}}.json        
           container-name: nodeapp-container-${{steps.vars.outputs.stage}}
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
 
