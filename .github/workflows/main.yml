@@ -53,8 +53,8 @@ jobs:
           image: ${{ steps.login-ecr.outputs.registry }}/${{ secrets.AWS_ECR_REPOSITORY }}:${{steps.vars.outputs.stage}}-${{ github.sha }}
 
       - name: Deploy to Amazon ECS Service
-        env:
-          ECS_SERVICE: nodeapp-service-${{steps.vars.outputs.stage}}
+        env: 
+          ECS_SERVICE: nodeapp-service-alb-${{steps.vars.outputs.stage}}
           ECS_CLUSTER: jerrynode-${{steps.vars.outputs.stage}}
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:

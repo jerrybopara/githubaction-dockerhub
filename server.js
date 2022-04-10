@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World. It is my - QA Branch. After Merge');
+  res.send('Hello World. It is my - QA Branch with ALB.');
 });
 
 app.listen(PORT, HOST);
