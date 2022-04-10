@@ -54,7 +54,8 @@ jobs:
 
       - name: Deploy to Amazon ECS Service
         env:
-          ECS_SERVICE: nodeapp-service-${{steps.vars.outputs.stage}}
+          # ECS_SERVICE: nodeapp-service-${{steps.vars.outputs.stage}}
+          ECS_SERVICE: nodeapp-service-alb-${{steps.vars.outputs.stage}}
           ECS_CLUSTER: jerrynode-${{steps.vars.outputs.stage}}
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
