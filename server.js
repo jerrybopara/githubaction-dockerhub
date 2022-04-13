@@ -9,7 +9,7 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World. It is my - QA Branch with ALB - Commit 2.');
+  res.send('Hello World. It is my - QA Branch with ALB - Date: 13.04.2022 - commit -1.');
 });
 
 app.listen(PORT, HOST);
